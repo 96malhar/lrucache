@@ -1,5 +1,7 @@
 package lrucache
 
+import "fmt"
+
 type LRUCache struct {
 	ll       *linkedList
 	dict     map[int]*listNode
@@ -65,6 +67,17 @@ func (c *LRUCache) evictLRU() {
 
 	c.ll.delete(lruNode)
 	delete(c.dict, lruNode.key)
+}
+
+func (c *LRUCache) PrintCache() {
+	if c.size == 0 {
+		fmt.Println("Cache is empty")
+		return
+	}
+
+	for key, node := range c.dict {
+		fmt.Printf("Key: %d Value: %d\n", key, node.value)
+	}
 }
 
 func (ll *linkedList) append(node *listNode) {
