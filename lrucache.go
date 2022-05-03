@@ -75,6 +75,7 @@ func (c *LRUCache) PrintCache() {
 		return
 	}
 
+	fmt.Println("Cache Contents:")
 	for key, node := range c.dict {
 		fmt.Printf("Key: %d Value: %d\n", key, node.value)
 	}
